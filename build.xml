@@ -1,0 +1,23 @@
+<project name="practice1" default="jar">
+	<target name="clean">
+		<mkdir dir="build/classes"/>
+		<mkdir dir="src"/>
+	</target>
+	<target name="init" depends="clean">
+		<mkdir dir="build/classes"/>
+		<mkdir dir="src/java"/>
+		<mkdir dir="build/jar"/>
+	</target>
+	<target name="copy" depends="init">
+		 <copy file="one.java" todir="src/java"/>
+	</target>
+	<target name="compile" depends="copy">
+		<javac srcdir="src/java"
+         destdir="build/classes"
+         classpath="lib\junit.jar"/>
+	</target>
+	<target name="jar" depends="compile">
+			  <jar destfile="build/jar/app-1.0.jar" basedir="build/classes"/>
+
+	</target>
+</project>
